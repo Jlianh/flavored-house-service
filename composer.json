@@ -1,0 +1,42 @@
+{
+    "name": "lacasita/spice-api",
+    "description": "Spice Quotation API - Laravel 11",
+    "type": "project",
+    "require": {
+        "php": "^8.2",
+        "laravel/framework": "^11.0",
+        "mongodb/laravel-mongodb": "^4.3",
+        "firebase/php-jwt": "^6.10",
+        "cloudinary-labs/cloudinary-laravel": "^2.1",
+        "barryvdh/laravel-cors": "^2.0",
+        "guzzlehttp/guzzle": "^7.9",
+        "tecnickcom/tcpdf": "^6.7"
+    },
+    "require-dev": {
+        "laravel/pint": "^1.13",
+        "phpunit/phpunit": "^11.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    },
+    "scripts": {
+        "post-autoload-dump": [
+            "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
+            "@php artisan package:discover --ansi"
+        ]
+    },
+    "config": {
+        "optimize-autoloader": true,
+        "preferred-install": "dist",
+        "sort-packages": true
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true
+}
