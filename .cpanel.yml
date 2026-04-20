@@ -2,17 +2,31 @@ deployment:
   tasks:
     - export APPPATH=/home/condicasitapane/laravel_app
     - export PUBLICPATH=/home/condicasitapane/api_public
-    # Copiar carpeta public al public_html
-    - /bin/cp -R public/* $DEPLOYPATH
 
-    # Instalar dependencias (si hay composer)
+    # Crear carpetas si no existen
+    - /bin/mkdir -p $APPPATH
+    - /bin/mkdir -p $PUBLICPATH
+
+    # Copiar todo el proyecto Laravel (excepto public)
+    - /bin/rsync -av --exclude="public" ./ $APPPATH
+
+    # Copiar solo archivos públicos
+    - /bin/rsync -av public/ $PUBLICPATH
+
+    # Entrar al app
+    - cd $APPPATH
+
+    # Instalar dependencias
     - /usr/bin/composer install --no-dev --optimize-autoloader
 
-    # Limpiar caches
+    # Permisos
+    - /bin/chmod -R 755 storage
+    - /bin/chmod -R 755 bootstrap/cache
+
+    # Laravel cache
     - php artisan config:clear
     - php artisan cache:clear
     - php artisan view:clear
 
-    # Cachear configuración para producción
     - php artisan config:cache
     - php artisan route:cache
