@@ -1,6 +1,6 @@
 deployment:
   tasks:
-    - export DEPLOYPATH=/home/usuario/public_html
+    - export DEPLOYPATH=/home/condicasitapane/public_html
 
     # Copiar carpeta public al public_html
     - /bin/cp -R public/* $DEPLOYPATH
