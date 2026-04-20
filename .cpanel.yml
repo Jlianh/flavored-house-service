@@ -1,7 +1,7 @@
 deployment:
   tasks:
-    - export APPPATH=/home/usuario/laravel_app
-    - export PUBLICPATH=/home/usuario/api_public
+    - export APPPATH=/home/condicasitapane/laravel_app
+    - export PUBLICPATH=/home/condicasitapane/api_public
     # Copiar carpeta public al public_html
     - /bin/cp -R public/* $DEPLOYPATH
 
