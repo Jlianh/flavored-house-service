@@ -1,0 +1,18 @@
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home/usuario/public_html
+
+    # Copiar carpeta public al public_html
+    - /bin/cp -R public/* $DEPLOYPATH
+
+    # Instalar dependencias (si hay composer)
+    - /usr/bin/composer install --no-dev --optimize-autoloader
+
+    # Limpiar caches
+    - php artisan config:clear
+    - php artisan cache:clear
+    - php artisan view:clear
+
+    # Cachear configuración para producción
+    - php artisan config:cache
+    - php artisan route:cache
