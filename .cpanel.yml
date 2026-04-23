@@ -1,5 +1,6 @@
 deployment:
   tasks:
+    - echo "DEPLOY OK" > /home/condicasitapane/test.txt
     - touch /home/condicasitapane/test_deploy.txt
     - export APPPATH=/home/condicasitapane/laravel_app
     - export PUBLICPATH=/home/condicasitapane/api_public
