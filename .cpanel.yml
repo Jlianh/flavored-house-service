@@ -1,5 +1,6 @@
 deployment:
   tasks:
+    - touch /home/condicasitapane/test_deploy.txt
     - export APPPATH=/home/condicasitapane/laravel_app
     - export PUBLICPATH=/home/condicasitapane/api_public
     - export REPOPATH=/home/condicasitapane/repositories/flavored-house-service
