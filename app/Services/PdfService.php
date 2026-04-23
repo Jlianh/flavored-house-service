@@ -34,7 +34,7 @@ class PdfService
         }
 
         $cloudName = env('CLOUDINARY_CLOUD_NAME');
-        $folder    = env('CLOUDINARY_FOLDER', 'spice-products');
+        $folder    = env('CLOUDINARY_FOLDER', 'casita-del-sabor');
 
         if ($cloudName && !empty($item['imageName'])) {
             $publicId = preg_replace('/\.[^.]+$/', '', $item['imageName']);
@@ -270,8 +270,9 @@ class PdfService
         $pdf->SetFont('helvetica', 'B', 8);
         $pdf->Rect(15, $y, 180, 8, 'F');
 
-        $pdf->SetXY(87, $y + 1);  $pdf->Cell(65, 6, 'Producto');
-        $pdf->SetXY(152, $y + 1); $pdf->Cell(22, 6, 'Gramaje');
+        $pdf->SetXY(17, $y + 1);  $pdf->Cell(65, 6, 'Imagen');
+        $pdf->SetXY(45, $y + 1);  $pdf->Cell(65, 6, 'Producto');
+        $pdf->SetXY(102, $y + 1); $pdf->Cell(22, 6, 'Gramaje');
         $pdf->SetXY(174, $y + 1); $pdf->Cell(22, 6, 'Cantidad');
 
         // Red rule below header
@@ -320,7 +321,7 @@ class PdfService
         // Grammage
         $pdf->SetFont('helvetica', '', 9);
         $pdf->SetTextColor(...self::DARK);
-        $pdf->SetXY(152, $y + 8);
+        $pdf->SetXY(102, $y + 8);
         $pdf->Cell(22, 5, $item['grammage'] ?? '');
 
         // Quantity
@@ -527,7 +528,7 @@ class PdfService
 
     private function billCols(): array
     {
-        return [30, 38, 22, 14, 12, 26, 16, 22];
+        return [30, 38, 29, 7, 11, 27, 16, 22];
     }
 
     // ── Utility ───────────────────────────────────────────────────────────────

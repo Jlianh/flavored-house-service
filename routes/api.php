@@ -3,6 +3,7 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\QuotationController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\DebugController;
 
 /*
 |--------------------------------------------------------------------------
@@ -52,3 +53,5 @@ Route::prefix('quotation')->group(function () {
     Route::post('/bill/preview', [QuotationController::class, 'previewBill']);
     Route::get('/debug-image',   [QuotationController::class, 'debugImage']);
 });
+
+Route::get('/debug/image-pipeline', [DebugController::class, 'imagePipeline']);
